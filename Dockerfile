@@ -1,6 +1,6 @@
 FROM base/archlinux
 
-RUN pacman -Sy rsync sudo ca-certificates bash wget openssh unzip openssl && \
+RUN pacman --noconfirm -Sy rsync sudo ca-certificates bash wget openssh unzip openssl && \
     echo "%root ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
     rm -rf /tmp/* /var/cache/pacman/pkg/* && \
     adduser -S user -h /home/user -s /bin/bash -G root -u 1000 && \
@@ -11,7 +11,7 @@ RUN pacman -Sy rsync sudo ca-certificates bash wget openssh unzip openssl && \
     sudo chmod -R g+rwX ${HOME}
 
 # fakse os-release for condenvy.io
-RUN pacman -Sy sed && \
+RUN pacman --noconfirm -Sy sed && \
     sed -i -E 's/ID=.*/ID=alpine/g' /etc/os-release
 
 USER user
