@@ -1,4 +1,4 @@
-FROM arch/base
+FROM base/archlinux
 
 RUN pacman -Sy rsync sudo ca-certificates bash wget openssh unzip openssl && \
     echo "%root ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
