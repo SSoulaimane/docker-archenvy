@@ -6,9 +6,10 @@ RUN pacman --noconfirm -Sy rsync sudo ca-certificates bash wget openssh unzip op
     useradd user -d /home/user -s /bin/bash -G root -u 1000 && \
     echo "%root ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
     usermod -p "*" user && \
+    sudo mkdir -p /home/user/ && \
     sudo chown -R user /home/user/ && \
-    sudo chgrp -R 0 ${HOME} && \
-    sudo chmod -R g+rwX ${HOME}
+    sudo chgrp -R 0 /home/user/ && \
+    sudo chmod -R g+rwX /home/user/
 
 # fakse os-release for condenvy.io
 RUN pacman --noconfirm -Sy sed && \
