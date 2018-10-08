@@ -20,4 +20,3 @@ CMD sudo /usr/bin/ssh-keygen -A && \
     sudo /usr/sbin/sshd -D && \
     sudo su - && \
     tail -f /dev/null
-
