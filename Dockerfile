@@ -3,7 +3,7 @@ FROM base/archlinux
 RUN pacman --noconfirm -Sy rsync sudo ca-certificates bash wget openssh unzip openssl && \
     echo "%root ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
     rm -rf /tmp/* /var/cache/pacman/pkg/* && \
-    adduser -S user -h /home/user -s /bin/bash -G root -u 1000 && \
+    useradd user -d /home/user -s /bin/bash -G root -u 1000 && \
     echo "%root ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
     usermod -p "*" user && \
     sudo chown -R user /home/user/ && \
