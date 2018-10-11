@@ -16,11 +16,9 @@ RUN pacman --noconfirm -Sy rsync sudo ca-certificates bash wget openssh unzip op
     echo "HostKey /etc/ssh/ssh_host_dsa_key" >>/etc/ssh/sshd_config && \
     echo "HostKey /etc/ssh/ssh_host_ecdsa_key" >>/etc/ssh/sshd_config && \
     echo "HostKey /etc/ssh/ssh_host_ed25519_key" >>/etc/ssh/sshd_config && \
-    echo "ServerKeyBits 1024" >>/etc/ssh/sshd_config && \
     echo "StrictModes no" >>/etc/ssh/sshd_config && \
     echo "LogLevel INFO" >>/etc/ssh/sshd_config && \
     echo "PermitRootLogin without-password" >>/etc/ssh/sshd_config && \
-    echo "RSAAuthentication yes" >>/etc/ssh/sshd_config && \
     echo "PubkeyAuthentication yes" >>/etc/ssh/sshd_config && \
     echo "X11Forwarding yes" >>/etc/ssh/sshd_config && \
     echo "TCPKeepAlive yes" >>/etc/ssh/sshd_config && \
