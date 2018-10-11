@@ -1,6 +1,6 @@
 FROM base/archlinux
 
-RUN pacman --noconfirm -Sy rsync sudo ca-certificates bash wget openssh unzip openssl && \
+RUN pacman --noconfirm -Sy rsync sudo ca-certificates bash wget openssh unzip openssl jre8-openjdk-headless && \
     echo "%root ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
     rm -rf /tmp/* /var/cache/pacman/pkg/* && \
     useradd user -d /home/user -m -s /bin/bash -G root -u 1000 && \
@@ -22,7 +22,8 @@ RUN pacman --noconfirm -Sy rsync sudo ca-certificates bash wget openssh unzip op
     echo "PubkeyAuthentication yes" >>/etc/ssh/sshd_config && \
     echo "X11Forwarding yes" >>/etc/ssh/sshd_config && \
     echo "TCPKeepAlive yes" >>/etc/ssh/sshd_config && \
-    echo "AcceptEnv LANG LC_*" >>/etc/ssh/sshd_config
+    echo "AcceptEnv LANG LC_*" >>/etc/ssh/sshd_config && \
+    ln -s java-8-openjdk /usr/lib/jvm/java-1.8-openjdk
 
 # fakse os-release for condenvy.io
 RUN pacman --noconfirm -Sy sed && \
