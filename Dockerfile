@@ -1,5 +1,9 @@
-FROM base/archlinux
+# Archlinux machine for codenvy.io
 
+FROM archlinux/base
+
+ENV LANG=C.UTF-8
+USER root
 RUN pacman --noconfirm -Sy rsync sudo ca-certificates bash wget openssh unzip openssl jre8-openjdk-headless && \
     echo "%root ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
     rm -rf /tmp/* /var/cache/pacman/pkg/* && \
@@ -25,7 +29,7 @@ RUN pacman --noconfirm -Sy rsync sudo ca-certificates bash wget openssh unzip op
     echo "AcceptEnv LANG LC_*" >>/etc/ssh/sshd_config && \
     ln -s java-8-openjdk /usr/lib/jvm/java-1.8-openjdk
 
-# fakse os-release for condenvy.io
+# pretend to be alpine to bypass condenvy.io distro checks
 RUN pacman --noconfirm -Sy sed && \
     sed -i -E 's/ID=.*/ID=alpine/g' /etc/os-release
 
