@@ -33,7 +33,7 @@ RUN pacman --noconfirm -Sy rsync sudo ca-certificates bash wget openssh unzip op
 RUN pacman --noconfirm -Sy sed && \
     sed -i -E 's/ID=.*/ID=alpine/g' /etc/os-release
 
-EXPOSE 22 8000 8080 4403
+EXPOSE 22 8000 8080 4403 8081 8082 8083 8084 8085
 
 USER user
 
