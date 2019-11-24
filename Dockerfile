@@ -4,7 +4,7 @@ FROM archlinux/base
 
 ENV LANG=C.UTF-8
 USER root
-RUN pacman --noconfirm -Sy rsync sudo ca-certificates bash wget openssh unzip openssl jre8-openjdk-headless && \
+RUN pacman --noconfirm -Sy rsync sudo ca-certificates bash wget openssh unzip grep openssl jre8-openjdk-headless && \
     echo "%root ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
     rm -rf /tmp/* /var/cache/pacman/pkg/* && \
     useradd user -d /home/user -m -s /bin/bash -G root -u 1000 && \
