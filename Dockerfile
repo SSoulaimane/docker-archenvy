@@ -29,6 +29,10 @@ RUN pacman --noconfirm -Sy rsync sudo ca-certificates bash wget openssh unzip gr
     echo "AcceptEnv LANG LC_*" >>/etc/ssh/sshd_config && \
     ln -s java-8-openjdk /usr/lib/jvm/java-1.8-openjdk
 
+# workarrond for a bug in sudo
+# credits: https://bugzilla.redhat.com/show_bug.cgi?id=1773148#c1
+RUN echo "Set disable_coredump false" >/etc/sudo.conf
+
 # pretend to be alpine to bypass condenvy.io distro checks
 RUN pacman --noconfirm -Sy sed && \
     sed -i -E 's/ID=.*/ID=alpine/g' /etc/os-release
